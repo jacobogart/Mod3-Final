@@ -4,6 +4,7 @@ import './App.css';
 import Header from '../Header/Header';
 import { fetchPresData } from '../../api/fetchPresData';
 import { setPresidents, setIsLoading, setHasErrored } from '../../actions';
+import PresContainer from '../PresContainer/PresContainer';
 
 export class App extends Component {
   componentDidMount() {
@@ -17,6 +18,7 @@ export class App extends Component {
     return (
       <div className="App">
         <Header />
+        <PresContainer />
       </div>
     );
   } 
