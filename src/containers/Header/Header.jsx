@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <header>
         <h1>Presidents and Assholes</h1>
-        <input type="select"/>
+        <select name="party" id="party"></select>
       </header>
     );
   }
