@@ -3,22 +3,14 @@ import { connect } from 'react-redux';
 import './App.css';
 import Header from '../Header/Header';
 import { fetchPresData } from '../../api/fetchPresData';
-import { setPresidents } from '../../actions';
+import { setPresidents, setIsLoading, setHasErrored } from '../../actions';
 
 export class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isLoading: false,
-      error: ''
-    }
-  }
-
   componentDidMount() {
-    this.setState({ isLoading: true });
+    this.props.setIsLoading();
     fetchPresData()
       .then(data => this.props.setPresidents(data))
-      .catch(error => this.setState({ error, isLoading: false }))
+      .catch(error => this.props.setHasErrored(error))
   }
   
   render() {
@@ -31,7 +23,9 @@ export class App extends Component {
 }
 
 export const mapDispatchToProps = (dispatch) => ({
-  setPresidents: (presidents) => dispatch(setPresidents(presidents))
+  setPresidents: (presidents) => dispatch(setPresidents(presidents)),
+  setIsLoading: () => dispatch(setIsLoading()),
+  setHasErrored: (error) => dispatch(setHasErrored(error))
 })
 
 export default connect(null, mapDispatchToProps)(App);
