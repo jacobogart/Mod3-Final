@@ -28,4 +28,14 @@ describe('Action Creators', () => {
     const result = a.setHasErrored(error);
     expect(result).toEqual(expected);
   });
+
+  it('should return a SET_FILTER action', () => {
+    const party = 'Whig';
+    const expected = {
+      type: 'SET_FILTER',
+      party
+    };
+    const result = a.setFilter(party);
+    expect(result).toEqual(expected);
+  });
 });
