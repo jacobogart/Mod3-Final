@@ -11,7 +11,7 @@ export const PresContainer = (props) =>  {
     ? null
     : props.presidents.map(pres => <PresCard data={pres} key={pres.number} />)
   return (
-    <section>
+    <section className="PresContainer">
       {props.isLoading && loadingMsg}
       {props.hasErrored && errorMsg}
       {presCards}
