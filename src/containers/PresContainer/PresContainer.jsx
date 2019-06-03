@@ -5,11 +5,12 @@ import { PresCard } from '../../components/PresCard/PresCard';
 
 
 export const PresContainer = (props) =>  {
-  const loadingMsg = <h2>Loading...</h2>
-  const errorMsg = <h2>{props.hasErrored}</h2>
-  const presCards = props.isLoading 
-    ? null
-    : props.presidents.map(pres => <PresCard data={pres} key={pres.number} />)
+  const loadingMsg = <h2>Loading...</h2>;
+  const errorMsg = <h2>{props.hasErrored}</h2>;
+  const filteredPres = props.filter 
+    ? props.presidents.filter(pres => pres.party === props.filter)
+    : props.presidents
+  const presCards = filteredPres.map(pres => <PresCard data={pres} key={pres.number} />)
   return (
     <section className="PresContainer">
       {props.isLoading && loadingMsg}
@@ -22,7 +23,8 @@ export const PresContainer = (props) =>  {
 export const mapStateToProps = (state) => ({
   presidents: state.presidents,
   isLoading: state.isLoading,
-  hasErrored: state.hasErrored
+  hasErrored: state.hasErrored,
+  filter: state.filter
 })
 
 export default connect(mapStateToProps)(PresContainer);

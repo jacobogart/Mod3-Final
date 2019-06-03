@@ -12,3 +12,8 @@ export const setHasErrored = (error) => ({
   error
 });
 
+export const setFilter = (party) => ({
+  type: 'SET_FILTER',
+  party
+});
+
