@@ -4,11 +4,11 @@ export const setPresidents = (presidents) => ({
 });
 
 export const setIsLoading = () => ({
-  type: 'SET_IS_LOADING',
+  type: 'SET_IS_LOADING'
 });
 
 export const setHasErrored = (error) => ({
-  type: 'SET_HAS_ERROED',
+  type: 'SET_HAS_ERRORED',
   error
 });
 
